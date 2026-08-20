@@ -57,5 +57,12 @@
     ]
   },
   "id": "hydrogen-francium.jm_plugin",
-  "plugin_type": "extension"
+  "plugin_type": "extension",
+  "display": {
+    "icon": {
+      "type": "local",
+      "value": "icon.webp",
+      "fallback": "image"
+    }
+  }
 }

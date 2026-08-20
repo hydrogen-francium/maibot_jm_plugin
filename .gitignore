@@ -4,12 +4,8 @@
 !/.gitignore
 !/_manifest.json
 !/plugin.py
-!/config.toml
 !/README.md
 !/LICENSE
-
-# 若未来增加插件图标，可在此明确放行对应文件，例如：
-# !/icon.png
 
 # 测试、开发文档和运行数据均不进入发布仓库。
 test_*.py
@@ -31,6 +27,7 @@ __pycache__/
 *.jpeg
 *.png
 *.webp
+!/icon.webp
 option*.yml
 config.local.toml
 config.toml.backup.*
