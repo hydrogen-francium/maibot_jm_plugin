@@ -2,7 +2,7 @@
 
 JM 插件是一个给 MaiBot 使用的 JMComic 下载和以图搜本插件。安装后，你可以在聊天中搜索 JM 本子、下载指定章节、生成 PDF 或 AES 加密 ZIP，也可以发送图片反查对应的 JM 本子。
 
-插件使用 MaiBot SDK v2，不依赖 AstrBot。默认以图搜本服务为 SoutuBot，通常不需要填写 API Key。
+插件使用 MaiBot SDK v2，默认以图搜本服务为 SoutuBot，通常不需要填写 API Key。
 
 ## 你可以用它做什么
 
