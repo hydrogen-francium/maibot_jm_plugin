@@ -1,0 +1,36 @@
+# 发布仓库采用白名单：默认忽略全部内容，只保留插件运行与发布所需文件。
+*
+
+!/.gitignore
+!/_manifest.json
+!/plugin.py
+!/config.toml
+!/README.md
+!/LICENSE
+
+# 若未来增加插件图标，可在此明确放行对应文件，例如：
+# !/icon.png
+
+# 测试、开发文档和运行数据均不进入发布仓库。
+test_*.py
+*_test.py
+tests/
+pytests/
+docs/
+data/
+runtime/
+__pycache__/
+*.py[cod]
+*.log
+*.pdf
+*.zip
+*.dat
+*.bin
+*.tmp
+*.jpg
+*.jpeg
+*.png
+*.webp
+option*.yml
+config.local.toml
+config.toml.backup.*

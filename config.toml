@@ -1,0 +1,30 @@
+[jm]
+jm_data_dir = ""
+proxy = ""
+napcat_base_url = "http://127.0.0.1:3000"
+max_pdf_pages = 500
+use_encrypted_zip = false
+fake_extension = ".dat"
+
+[sotu]
+provider = "soutubot"
+api_base = "https://soutubot.moe"
+user_agent = "Mozilla/5.0"
+factor = 1.2
+timeout_seconds = 30
+max_upload_bytes = 10485760
+max_results = 5
+min_similarity = 40.0
+flaresolverr_url = ""
+api_key = ""
+proxy = ""
+
+[permission]
+mode = "blacklist"
+group_list = ["774169604"]
+user_mode = "off"
+user_list = []
+
+[plugin]
+enabled = true
+config_version = "2.0.0"
