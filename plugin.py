@@ -433,7 +433,18 @@ def _extract_message_image(message: Any) -> Any:
         found = _find_image_in_segments(message.get(key))
         if found:
             return found
-    return message.get("image_data") or message.get("image")
+    direct = message.get("image_data") or message.get("image")
+    if direct:
+        return direct
+    # SDK 消息能力返回 {success, message}，部分适配器还会再包一层 data。
+    for key in ("message", "data"):
+        nested = message.get(key)
+        if nested is message:
+            continue
+        found = _extract_message_image(nested)
+        if found:
+            return found
+    return None
 
 
 def _find_reply_target_id(message: Any) -> str:
@@ -1574,6 +1585,8 @@ class JMSotuCommand(SDKCommandBridge, BaseCommand):
         r"^(?:"
         r"\[回复 [^\r\n\]]*?\]，说：\s*"
         r"|\[回复<[^>\r\n]*>：[^\r\n\]]*?\]，说：\s*"
+        r"|\[回复了[^\r\n\]]*?:[^\r\n\]]*\]\s*"
+        r"|\[回复了一条消息，但原消息已无法访问\]\s*"
         r")?"
         r"/jm搜图\s*$"
     )
@@ -2433,7 +2446,10 @@ class JMPlugin(MaiBotPlugin):
             r"^(?:"
             r"\[回复 [^\r\n\]]*?\]，说：\s*"
             r"|\[回复<[^>\r\n]*>：[^\r\n\]]*?\]，说：\s*"
-            r")?/jm搜图\s*$"
+            r"|\[回复了[^\r\n\]]*?:[^\r\n\]]*\]\s*"
+            r"|\[回复了一条消息，但原消息已无法访问\]\s*"
+            r")?"
+            r"/jm搜图\s*$"
         ),
     )
     async def handle_soutu(self, **kwargs: Any):
